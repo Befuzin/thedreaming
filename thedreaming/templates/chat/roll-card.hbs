@@ -1,0 +1,9 @@
+<div class="chat-roll-card">
+  <h3>{{label}}</h3>
+  <p><strong>Roll:</strong> {{formula}} = {{total}}</p>
+  <p><strong>Flex Die:</strong> {{flexDie}} = {{flexValue}}</p>
+  {{#if mod}}<p><strong>Modifier:</strong> {{mod}}</p>{{/if}}
+  {{#if autoFail}}<p class="fail">⚠️ Automatic Failure!</p>{{/if}}
+  {{#if flexCrit}}<p class="crit">🔥 Flex Critical Success!</p>{{/if}}
+</div>
+
