@@ -1,0 +1,16 @@
+<div class="thedreaming-roll-card">
+  <h2 class="roll-title">{{label}} Check</h2>
+
+  <div class="roll-details">
+    <p><strong>Formula:</strong> {{formula}}</p>
+    <p><strong>Total:</strong> {{result}}</p>
+
+    {{#if isCritFail}}
+      <p class="crit-fail">💀 Oh noooooo!</p>
+    {{/if}}
+
+    {{#if isFlexCrit}}
+      <p class="flex-crit">🔥 Flex! Rolled {{parts.flexDie}} = {{parts.flexResult}}</p>
+    {{/if}}
+  </div>
+</div>
