@@ -1,0 +1,29 @@
+:root {
+  --thedreaming-c-dark: #191813;
+  --thedreaming-c-faint: #c9c7b8;
+  --thedreaming-c-beige: #b5b3a4;
+  --thedreaming-c-tan: #444444;
+  --thedreaming-c-white: #ffffff;
+  --thedreaming-c-black: #000000;
+  --thedreaming-c-groove: #eeede0;
+}
+
+.theme-dark {
+  --thedreaming-c-dark: #c9c7b8;
+  --thedreaming-c-faint: #191813;
+  --thedreaming-c-beige: #444444;
+  --thedreaming-c-tan: #b5b3a4;
+  --thedreaming-c-white: #000000;
+  --thedreaming-c-black: #ffffff;
+  --thedreaming-c-groove: #11121f;
+}
+
+$c-white: var(--thedreaming-c-white);
+$c-black: var(--thedreaming-c-black);
+
+$c-dark: var(--thedreaming-c-dark);
+$c-faint: var(--thedreaming-c-faint);
+$c-beige: var(--thedreaming-c-beige);
+$c-tan: var(--thedreaming-c-tan);
+
+$c-groove: var(--thedreaming-c-groove);
