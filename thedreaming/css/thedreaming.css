@@ -33,17 +33,11 @@
   border-radius: 4px;
 }
 
-/* Additional Tabs - Hidden Unless Checked */
 
-/* Default: Hide the weapon tab */
-.tab.weapon {
-  display: none;
-}
 
-/* Show the weapon tab when the item is a weapon (when system.isWeapon is true) */
-.tab.weapon[data-group="primary"][data-tab="weaponTab"]:not(.hidden) {
-  display: block;
-}
+/* Weapon item buttons */
+
+
 
 
 /* Base styling for the Rule of Three pop-up */
@@ -419,7 +413,7 @@
 
 
 .thedreaming .sheet-tabs.tabs a.active {
-  background-image: url("../assets/353.png");
+
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;

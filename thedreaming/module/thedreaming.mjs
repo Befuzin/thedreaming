@@ -9,6 +9,8 @@ import { thedreamingItemSheet } from './sheets/item-sheet.mjs';
 import { THEDREAMING } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
+import thedreamingWeapon from './data/item-weapon.mjs';
+import thedreamingArmour from './data/item-armour.mjs';
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -59,8 +61,8 @@ Hooks.once('init', function () {
     gear: models.thedreamingGear,
     feature: models.thedreamingFeature,
     spell: models.thedreamingSpell,
-
-  };
+    weapon: models.thedreamingWeapon,
+    armour: models.thedreamingArmour, };
 
   // Active Effects are never copied to the Actor,
   // but will still apply to the Actor from within the Item
@@ -111,6 +113,8 @@ Hooks.once('init', function () {
     gear: models.thedreamingGear,
     feature: models.thedreamingFeature,
     spell: models.thedreamingSpell,
+    weapon: models.thedreamingWeapon,
+    armour: models.thedreamingArmour,
   };
 
   CONFIG.ActiveEffect.legacyTransferral = false;
@@ -127,9 +131,27 @@ Hooks.once('init', function () {
     label: 'THEDREAMING.SheetLabels.Item',
   });
 
-  // ✅ Register Handlebars helpers here
+  //  Helpers 
   Handlebars.registerHelper('array', (...args) => args.slice(0, -1));
   Handlebars.registerHelper('toLowerCase', str => str.toLowerCase());
+
+  Handlebars.registerPartial(
+    "systems/thedreaming/templates/item-list.hbs",
+    "templates/item-list.hbs"
+  );
+
+
+  Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
+    return arg1 === arg2 ? options.fn(this) : options.inverse(this);
+  });
+
+  Handlebars.registerHelper("eq", (a, b) => a === b);
+
+  Handlebars.registerHelper("capitalize", function (str) {
+    if (typeof str !== "string") return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  });
+
 });
 
 
@@ -210,4 +232,7 @@ function rollItemMacro(itemUuid) {
     // Trigger the item roll
     item.roll();
   });
+
+
+
 }

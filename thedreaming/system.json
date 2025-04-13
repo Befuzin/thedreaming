@@ -28,6 +28,12 @@
         },
         "spell": {
             "htmlFields": ["description"]
+        },
+        "weapon": {
+            "htmlFields": ["description"]
+        },
+        "armour": {
+            "htmlFields": ["description"]
         }
     }
   },

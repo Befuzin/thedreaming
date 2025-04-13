@@ -49,9 +49,8 @@
       "Tabs": {
         "Attributes": "Attributes",
         "Description": "Description",
-        "Effects": "Effects",
-        "Weapon": "Weapon",
-        "Armour": "Armour"
+        "Effects": "Effects"
+        
       },
       "Gear": {
         "FIELDS": {
@@ -87,7 +86,9 @@
     "Item": {
       "gear": "Gear",
       "feature": "Feature",
-      "spell": "Spell"
+      "spell": "Spell",
+      "weapon": "Weapon",
+      "armour": "Armour"
     
     }
   }

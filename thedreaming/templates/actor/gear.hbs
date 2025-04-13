@@ -1,83 +1,81 @@
-{{! Gear Tab }}
-<section class='tab gear {{tab.cssClass}}' data-group='primary' data-tab='gear'>
-  <ol class='items-list'>
-    <li class='item flexrow items-header'>
-      <div class='item-name'>{{localize 'Name'}}</div>
-      <div class='item-formula'>{{localize 'THEDREAMING.Item.Gear.FIELDS.rollFormula.label'}}</div>
-      <div class='item-controls'>
+new{{! All Items Tab }}
+
+<section class="tab gear {{tab.cssClass}}" data-group="primary" data-tab="gear">
+  <ol class="items-list">
+    <!-- Header Row -->
+    <li class="item flexrow items-header">
+      <div class="item-name">{{localize "Name"}}</div>
+      <div class="item-formula">{{localize "THEDREAMING.Item.Gear.FIELDS.rollFormula.label"}}</div>
+      <div class="item-controls">
         {{#if @root.editable}}
-          <a
-            class='item-control item-create'
-            title='{{localize "DOCUMENT.Create" type='Item'}}'
-            data-action='createDoc'
-            data-document-class='Item'
-            data-type='gear'
-          >
-            <i class='fas fa-plus'></i>
-            {{localize 'DOCUMENT.New' type='item'}}
+          <a class="item-control item-create"
+             title='{{localize "DOCUMENT.Create" type="Item"}}'
+             data-action="createDoc"
+             data-document-class="Item"
+             data-type="gear">
+            <i class="fas fa-plus"></i>
+            {{localize "DOCUMENT.New" type="item"}}
           </a>
         {{/if}}
       </div>
     </li>
 
-    {{#each gear as |item id|}}
-      <li
-        class='item'
-        data-item-id='{{item._id}}'
-        data-drag='true'
-        data-document-class='Item'
-      >
-        <div class='item-header flexrow'>
-          <div
-            class='item-name'
-            data-action='toggleDetails'
-            data-target='.item-details'
-            style='cursor: pointer;'
-          >
-            <div class='item-image'>
-              <a class='rollable' data-roll-type='item' data-action='roll'>
-                <img
-                  src='{{item.img}}'
-                  title='{{item.name}}'
-                  width='24'
-                  height='24'
-                />
+    <!-- Iterate over ALL actor items -->
+    {{#each actor.items as |item|}}
+      <li class="item" data-item-id="{{item._id}}" data-drag="true" data-document-class="Item">
+        <div class="item-header flexrow">
+          <!-- Toggle for details -->
+          <div class="item-name" data-action="toggleDetails" data-target=".item-details" style="cursor: pointer;">
+            <div class="item-image">
+              <a class="rollable" data-roll-type="item" data-action="roll">
+                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
               </a>
             </div>
-            <div>{{item.name}}</div>
+            <div class="item-name-content">
+  {{item.name}}
+
+  {{#if (eq item.type "weapon")}}
+    <div class="weapon-buttons">
+      <a class="attack-button" data-action="attack" data-item-id="{{item._id}}" title="{{localize 'THEDREAMING.Attack'}}">
+        <i class="fas fa-sword"></i>
+      </a>
+      <a class="damage-button" data-action="damage" data-item-id="{{item._id}}" title="{{localize 'THEDREAMING.Damage'}}">
+        <i class="fas fa-tint"></i>
+      </a>
+    </div>
+  {{/if}}
+</div>
+
           </div>
 
-          <div class='item-formula item-prop'>{{item.system.formula}}</div>
+          <!-- Optional item field like formula -->
+          <div class="item-formula item-prop">
+            {{#if item.system.formula}}
+              {{item.system.formula}}
+            {{/if}}
+          </div>
 
-          <div class='item-controls'>
-            <a
-              class='item-control item-edit'
-              title='{{localize "DOCUMENT.Update" type='Gear'}}'
-              data-action='viewDoc'
-            >
-              <i class='fas fa-edit'></i>
+          <div class="item-controls">
+            <a class="item-control item-edit" title='{{localize "DOCUMENT.Update" type=(capitalize item.type)}}' data-action="viewDoc">
+              <i class="fas fa-edit"></i>
             </a>
             {{#if @root.editable}}
-              <a
-                class='item-control item-delete'
-                title='{{localize "DOCUMENT.Delete" type='Gear'}}'
-                data-action='deleteDoc'
-              >
-                <i class='fas fa-trash'></i>
+              <a class="item-control item-delete" title='{{localize "DOCUMENT.Delete" type=(capitalize item.type)}}' data-action="deleteDoc">
+                <i class="fas fa-trash"></i>
               </a>
             {{/if}}
           </div>
         </div>
 
-        <div class='item-details hidden'>
-          <div class='item-description'>
+        <!-- Hidden expandable section for additional details -->
+        <div class="item-details hidden">
+          <div class="item-description">
             {{#if item.system.description}}
               {{{item.system.description}}}
             {{else}}
-              <em>No description available.</em>
+              <em>{{localize "No description available."}}</em>
             {{/if}}
           </div>
-          {{!-- Add more expandable content here, e.g. weight, rarity, etc. --}}
         </div>
       </li>
     {{/each}}

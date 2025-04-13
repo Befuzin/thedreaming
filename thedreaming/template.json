@@ -48,7 +48,7 @@
     }
   },
   "Item": {
-    "types": ["gear", "feature", "spell"],
+    "types": ["gear", "feature", "spell", "weapon", "armour"],
     "htmlFields": ["description"],
     "templates": {
       "base": {
@@ -76,6 +76,26 @@
      "spell": {
       "templates": ["base"],
       "spellLevel": 1
+    },
+    "weapon": {
+      "templates": ["weaponTab"],
+      "damage": {
+        "value": 1,
+        "type": "d6"
+      },
+      "range": {
+        "value": 5,
+        "type": "ft"
+      }
+    },
+    "armour": {
+      "templates": ["armourTab"],
+      "defense": {
+        "value": 1
+      },
+      "weight": {
+        "value": 0
+      }
     }
   }
 }

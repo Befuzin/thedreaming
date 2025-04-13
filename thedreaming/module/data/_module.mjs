@@ -8,4 +8,6 @@ export { default as thedreamingItemBase } from './base-item.mjs';
 export { default as thedreamingGear } from './item-gear.mjs';
 export { default as thedreamingFeature } from './item-feature.mjs';
 export { default as thedreamingSpell } from './item-spell.mjs';
+export { default as thedreamingWeapon } from './item-weapon.mjs';
+export { default as thedreamingArmour } from './item-armour.mjs';
 

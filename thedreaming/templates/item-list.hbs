@@ -1,0 +1,66 @@
+<section class='tab {{type}} {{tab.cssClass}}' data-group='primary' data-tab='{{type}}'>
+  <ol class='items-list'>
+    <li class='item flexrow items-header'>
+      <div class='item-name'>{{localize 'Name'}}</div>
+      {{#ifEquals type 'gear'}}<div class='item-formula'>{{localize 'THEDREAMING.Item.Gear.FIELDS.rollFormula.label'}}</div>{{/ifEquals}}
+      {{!-- Add other conditionals for other item fields here --}}
+      <div class='item-controls'>
+        {{#if @root.editable}}
+          <a
+            class='item-control item-create'
+            title='{{localize "DOCUMENT.Create" type='Item'}}'
+            data-action='createDoc'
+            data-document-class='Item'
+            data-type='{{type}}'
+          >
+            <i class='fas fa-plus'></i>
+            {{localize 'DOCUMENT.New' type='item'}}
+          </a>
+        {{/if}}
+      </div>
+    </li>
+
+    {{#each items as |item id|}}
+      <li class='item' data-item-id='{{item._id}}' data-drag='true' data-document-class='Item'>
+        <div class='item-header flexrow'>
+          <div
+            class='item-name'
+            data-action='toggleDetails'
+            data-target='.item-details'
+            style='cursor: pointer;'
+          >
+            <div class='item-image'>
+              <a class='rollable' data-roll-type='item' data-action='roll'>
+                <img src='{{item.img}}' title='{{item.name}}' width='24' height='24' />
+              </a>
+            </div>
+            <div>{{item.name}}</div>
+          </div>
+
+          {{#if item.system.formula}}<div class='item-formula item-prop'>{{item.system.formula}}</div>{{/if}}
+
+          <div class='item-controls'>
+            <a class='item-control item-edit' title='{{localize "DOCUMENT.Update"}}' data-action='viewDoc'>
+              <i class='fas fa-edit'></i>
+            </a>
+            {{#if @root.editable}}
+              <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}' data-action='deleteDoc'>
+                <i class='fas fa-trash'></i>
+              </a>
+            {{/if}}
+          </div>
+        </div>
+
+        <div class='item-details hidden'>
+          <div class='item-description'>
+            {{#if item.system.description}}
+              {{{item.system.description}}}
+            {{else}}
+              <em>No description available.</em>
+            {{/if}}
+          </div>
+        </div>
+      </li>
+    {{/each}}
+  </ol>
+</section>

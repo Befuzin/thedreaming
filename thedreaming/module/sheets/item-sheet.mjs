@@ -61,10 +61,10 @@ export class thedreamingItemSheet extends api.HandlebarsApplicationMixin(
     attributesSpell: {
       template: 'systems/thedreaming/templates/item/attribute-parts/spell.hbs',
     },
-    weaponTab: {
+    attributesWeapon: {
   template: 'systems/thedreaming/templates/item/attribute-parts/gear-weapon.hbs',
     },
-    armourTab: {
+    attributesArmour: {
       template: 'systems/thedreaming/templates/item/attribute-parts/gear-armour.hbs',
 },
     effects: {
@@ -92,14 +92,14 @@ _configureRenderOptions(options) {
 
     case 'gear':
       options.parts.push('attributesGear');
-      if (this.document.system.isWeapon) {
-        options.parts.push('weaponTab');
-        options.parts = options.parts.filter(p => p !== 'attributesGear'); // remove it
-      
-      if (this.document.system.isArmour) 
-        options.parts.push('armourTab');
-        options.parts = options.parts.filter(p => p !== 'attributesGear'); // remove it
-      }
+
+      break;
+    case 'weapon':
+      options.parts.push('attributesWeapon');
+      break;
+    
+    case 'armour':
+      options.parts.push('attributesArmour');
       break;
 
       
@@ -209,6 +209,8 @@ _configureRenderOptions(options) {
         case 'attributesFeature':
         case 'attributesGear':
         case 'attributesSpell':
+        case 'attributesWeapon':
+        case 'attributesArmour':  
           tab.id = 'attributes';
           tab.label += 'Attributes';
           break;
@@ -219,7 +221,6 @@ _configureRenderOptions(options) {
         case 'effects':
           tab.id = 'effects';
           tab.label += 'Effects';
-          break;
         case 'armourTab':
           tab.id = 'armourTab';
           tab.label += 'Armour';  

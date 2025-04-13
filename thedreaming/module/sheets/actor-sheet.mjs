@@ -15,6 +15,28 @@ export class thedreamingActorSheet extends api.HandlebarsApplicationMixin(
     this.#dragDrop = this.#createDragDropHandlers();
   }
 
+
+  getData() {
+    const data = super.getData();
+  
+    const items = this.actor.items.contents; // or this.actor.items.filter(...) in FVTT 10+
+    console.log("All Items:", items);
+  
+    data.gear = items.filter(i => i.type === "gear");
+    data.spells = items.filter(i => i.type === "spell");
+    data.weapons = items.filter(i => i.type === "weapon");
+    data.armour = items.filter(i => i.type === "armour");
+  
+    console.log("Gear:", data.gear);
+    console.log("Spells:", data.spells);
+    console.log("Weapons:", data.weapons);
+    console.log("Armour:", data.armour);
+  
+    return data;
+  }
+
+
+
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ['thedreaming', 'actor'],
@@ -865,8 +887,6 @@ static async _onRoll(event, target) {
   });
 }
 
-
-
 /**
  * Toggle visibility of a collapsible item section.
  * @param {PointerEvent} event - The click event
@@ -881,8 +901,32 @@ static _toggleDetails(event, target) {
 
   content.classList.toggle("hidden");
   target.closest(".item").classList.toggle("expanded");
-}
 
+
+
+
+
+
+}
+  /**
+   * Activate event listeners for the sheet - Attack and Damage buttons
+   * @param {JQuery} html - The HTML element of the sheet
+   */
+activateListeners(html) {
+  super.activateListeners(html);
+
+  html.find('.attack-button').click(ev => {
+    const itemId = ev.currentTarget.dataset.itemId;
+    const item = this.actor.items.get(itemId);
+    if (item) item.rollAttack?.(); // Or whatever your method is
+  });
+
+  html.find('.damage-button').click(ev => {
+    const itemId = ev.currentTarget.dataset.itemId;
+    const item = this.actor.items.get(itemId);
+    if (item) item.rollDamage?.();
+  });
+}
 
 
 
