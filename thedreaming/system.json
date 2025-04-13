@@ -4,11 +4,18 @@
   "description": "The thedreaming system for FoundryVTT!",
   "authors": [
     {
-      "name": "Selle",
-      "discord": "Selle on Conan "
+      "name": "Asacolips",
+      "discord": "asacolips"
+    },
+    {
+      "name": "Lee Talman",
+      "discord": ".pizzaWizard"
+    },
+    {
+      "name": "Joseph M.",
+      "url": "https://joseph-meehan.carrd.co/",
+      "discord": "chaosos"
     }
-  
-    
   ],
   "documentTypes": {
     "Actor": {
@@ -27,12 +34,6 @@
             "htmlFields": ["description"]
         },
         "spell": {
-            "htmlFields": ["description"]
-        },
-        "weapon": {
-            "htmlFields": ["description"]
-        },
-        "armour": {
             "htmlFields": ["description"]
         }
     }

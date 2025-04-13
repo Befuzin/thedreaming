@@ -50,7 +50,6 @@
         "Attributes": "Attributes",
         "Description": "Description",
         "Effects": "Effects"
-        
       },
       "Gear": {
         "FIELDS": {
@@ -86,10 +85,7 @@
     "Item": {
       "gear": "Gear",
       "feature": "Feature",
-      "spell": "Spell",
-      "weapon": "Weapon",
-      "armour": "Armour"
-    
+      "spell": "Spell"
     }
   }
 }

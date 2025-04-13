@@ -31,12 +31,6 @@ export class thedreamingItemSheet extends api.HandlebarsApplicationMixin(
     dragDrop: [{ dragSelector: '[data-drag]', dropSelector: null }],
   };
 
- 
-  /* -------------------------------------------- */
-
-
-  
-
   /* -------------------------------------------- */
 
   /** @override */
@@ -61,60 +55,31 @@ export class thedreamingItemSheet extends api.HandlebarsApplicationMixin(
     attributesSpell: {
       template: 'systems/thedreaming/templates/item/attribute-parts/spell.hbs',
     },
-    attributesWeapon: {
-  template: 'systems/thedreaming/templates/item/attribute-parts/gear-weapon.hbs',
-    },
-    attributesArmour: {
-      template: 'systems/thedreaming/templates/item/attribute-parts/gear-armour.hbs',
-},
     effects: {
       template: 'systems/thedreaming/templates/item/effects.hbs',
-    }
-
+    },
   };
 
-  
-
-/** @override */
-_configureRenderOptions(options) {
-  super._configureRenderOptions(options);
-  // Not all parts always render
-  options.parts = ['header', 'tabs', 'description'];
-
-  // Don't show the other tabs if only limited view
-  if (this.document.limited) return;
-
-  // Control which parts show based on document subtype
-  switch (this.document.type) {
-    case 'feature':
-      options.parts.push('attributesFeature', 'effects');
-      break;
-
-    case 'gear':
-      options.parts.push('attributesGear');
-
-      break;
-    case 'weapon':
-      options.parts.push('attributesWeapon');
-      break;
-    
-    case 'armour':
-      options.parts.push('attributesArmour');
-      break;
-
-      
-
-    case 'spell':
-      options.parts.push('attributesSpell');
-      break;
+  /** @override */
+  _configureRenderOptions(options) {
+    super._configureRenderOptions(options);
+    // Not all parts always render
+    options.parts = ['header', 'tabs', 'description'];
+    // Don't show the other tabs if only limited view
+    if (this.document.limited) return;
+    // Control which parts show based on document subtype
+    switch (this.document.type) {
+      case 'feature':
+        options.parts.push('attributesFeature', 'effects');
+        break;
+      case 'gear':
+        options.parts.push('attributesGear');
+        break;
+      case 'spell':
+        options.parts.push('attributesSpell');
+        break;
+    }
   }
-}
-
-
-
-
-
-
 
   /* -------------------------------------------- */
 
@@ -209,21 +174,12 @@ _configureRenderOptions(options) {
         case 'attributesFeature':
         case 'attributesGear':
         case 'attributesSpell':
-        case 'attributesWeapon':
-        case 'attributesArmour':  
           tab.id = 'attributes';
           tab.label += 'Attributes';
-          break;
-        case 'weaponTab':
-          tab.id = 'weaponTab';
-          tab.label += 'Weapon';
           break;
         case 'effects':
           tab.id = 'effects';
           tab.label += 'Effects';
-        case 'armourTab':
-          tab.id = 'armourTab';
-          tab.label += 'Armour';  
           break;
       }
       if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
@@ -579,4 +535,6 @@ _configureRenderOptions(options) {
       return new DragDrop(d);
     });
   }
+
+  
 }

@@ -16,15 +16,14 @@ export default class thedreamingGear extends thedreamingItemBase {
       initial: 1,
       min: 1,
     });
-
     schema.weight = new fields.NumberField({
-      required: false,
-      nullable: true,
+      required: true,
+      nullable: false,
       initial: 0,
       min: 0,
     });
 
-    // Roll formula breakdown
+    // Break down roll formula into three independent fields
     schema.roll = new fields.SchemaField({
       diceNum: new fields.NumberField({
         ...requiredInteger,
@@ -37,48 +36,15 @@ export default class thedreamingGear extends thedreamingItemBase {
       }),
     });
 
-
-    // Change this into a choice field, other, weapons, armours, shields etc.
-
     schema.formula = new fields.StringField({ blank: true });
-
-    // Add weapon toggle and weapon-specific fields
-    schema.isWeapon = new fields.BooleanField({ initial: false });
-
-    // Add armour toggle and armour-specific fields
-    schema.isArmour = new fields.BooleanField({ initial: false });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     return schema;
   }
 
   prepareDerivedData() {
+    // Build the formula dynamically using string interpolation
     const roll = this.roll;
 
-    // Build the roll formula string
     this.formula = `${roll.diceNum}${roll.diceSize}${roll.diceBonus}`;
   }
 }

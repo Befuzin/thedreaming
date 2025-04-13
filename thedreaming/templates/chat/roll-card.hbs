@@ -3,17 +3,14 @@
 
   <div class="roll-details">
     <p><strong>Formula:</strong> {{formula}}</p>
-    <p><strong>Base Die:</strong> {{parts.baseDie}} (rolled {{parts.abilityDieRoll}})</p>
-    <p><strong>Modifier:</strong> {{parts.modifier}}</p>
     <p><strong>Total:</strong> {{result}}</p>
 
     {{#if isCritFail}}
       <p class="crit-fail">💀 Oh noooooo!</p>
-      <img src="systems/thedreaming/assets/critfail.gif" alt="Critical Failure" class="crit-gif" />
     {{/if}}
 
     {{#if isFlexCrit}}
-      <p class="flex-crit">🔥 Flex triggered! Rolled {{parts.flexDie}} = {{parts.flexResult}}</p>
+      <p class="flex-crit">🔥 Flex! Rolled {{parts.flexDie}} = {{parts.flexResult}}</p>
     {{/if}}
   </div>
 </div>
