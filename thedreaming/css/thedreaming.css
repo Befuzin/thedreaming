@@ -1,0 +1,703 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+:root {
+  --thedreaming-c-dark: #191813;
+  --thedreaming-c-faint: #c9c7b8;
+  --thedreaming-c-beige: #b5b3a4;
+  --thedreaming-c-tan: #444444;
+  --thedreaming-c-white: #ffffff;
+  --thedreaming-c-black: #000000;
+  --thedreaming-c-groove: #eeede0;
+}
+
+.theme-dark {
+  --thedreaming-c-dark: #c9c7b8;
+  --thedreaming-c-faint: #191813;
+  --thedreaming-c-beige: #444444;
+  --thedreaming-c-tan: #b5b3a4;
+  --thedreaming-c-white: #000000;
+  --thedreaming-c-black: #ffffff;
+  --thedreaming-c-groove: #11121f;
+}
+
+
+
+/* Conan Styling */
+.ability-die-select {
+  width: 60px;
+  padding: 2px 4px;
+  text-align: center;
+  font-family: "Alegreya SC", serif;
+  background-color: #1a1a1a;
+  color: #eee;
+  border: 1px solid #5c1c1c;
+  border-radius: 4px;
+}
+
+/* Additional Tabs - Hidden Unless Checked */
+
+/* Default: Hide the weapon tab */
+.tab.weapon {
+  display: none;
+}
+
+/* Show the weapon tab when the item is a weapon (when system.isWeapon is true) */
+.tab.weapon[data-group="primary"][data-tab="weaponTab"]:not(.hidden) {
+  display: block;
+}
+
+
+/* Base styling for the Rule of Three pop-up */
+
+.window-app .thedreamingItemSheet-item {
+  width: auto !important;
+  max-width: 90vw;
+  background: url("../assets/background.webp") repeat;
+  border: 3px solid #5c1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(153, 0, 0, 0.7), inset 0 0 5px #000;
+  font-family: "Cinzel Decorative", serif;
+  color: #ddd;
+} 
+
+.window-app.RuleofThree {
+  width: auto !important;
+  max-width: 90vw;
+  background: url("../assets/background.webp") repeat;
+  border: 3px solid #5c1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(153, 0, 0, 0.7), inset 0 0 5px #000;
+  font-family: "Cinzel Decorative", serif;
+  color: #ddd;
+  padding: 1rem;
+}
+
+/* Header styling */
+.window-app.RuleofThree .window-header {
+  background: #2b0000;
+  border-bottom: 2px solid #7a1d1d;
+  color: #f3e2c7;
+  text-shadow: 0 0 5px #7a1d1d;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+/* Dialog form group */
+.thedreaming-mod-dialog .form-group {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Modifier button row horizontal layout */
+.thedreaming-mod-dialog .mod-button-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* You can set to wrap if needed */
+  justify-content: space-between; /* or center */
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+
+.thedreaming-mod-dialog .mod-button {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+
+
+
+
+
+
+/* Buttons */
+.thedreaming-mod-dialog .mod-button {
+  flex: 0 0 auto;
+  width: auto;
+  background: #3b1c1c;
+  border: 2px solid #944;
+  color: #f3e2c7;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.thedreaming-mod-dialog .mod-button:hover {
+  background: #622;
+  transform: scale(1.05);
+  box-shadow: 0 0 6px rgba(255, 0, 0, 0.4);
+}
+
+.thedreaming-mod-dialog .mod-button.active {
+  background: #b00;
+  border-color: #f00;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 50, 50, 0.8);
+}
+
+
+
+
+
+
+
+
+
+/* Roll / Chat Card */
+/* ====== The Dreaming Roll Card Styling ====== */
+.thedreaming-roll-card {
+  border: 2px solid #444;
+  padding: 1em;
+  border-radius: 10px;
+  background: #1b1b1b;
+  color: #f0e6d2;
+  font-family: 'Crimson Pro', serif;
+}
+
+.thedreaming-roll-card .roll-title {
+  font-size: 1.4em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #666;
+}
+
+.thedreaming-roll-card .roll-details p {
+  margin: 0.3em 0;
+}
+
+.crit-fail {
+  color: #ff5555;
+  font-weight: bold;
+}
+
+.crit-gif {
+  max-width: 100%;
+  margin-top: 0.5em;
+  border-radius: 6px;
+}
+
+.flex-crit {
+  color: #4de369;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Global styles */
+
+
+
+
+
+
+.window-app {
+  font-family: "Roboto", sans-serif;
+}
+
+.rollable:hover, .rollable:focus {
+  color: var(--thedreaming-c-black);
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
+.grid,
+.grid-2col {
+  display: grid;
+  grid-column: span 2/span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.grid-3col {
+  grid-column: span 3/span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4col {
+  grid-column: span 4/span 4;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-5col {
+  grid-column: span 5/span 5;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-6col {
+  grid-column: span 6/span 6;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-7col {
+  grid-column: span 7/span 7;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-8col {
+  grid-column: span 8/span 8;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.grid-9col {
+  grid-column: span 9/span 9;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.grid-10col {
+  grid-column: span 10/span 10;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.grid-11col {
+  grid-column: span 11/span 11;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+.grid-12col {
+  grid-column: span 12/span 12;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid-start-2 {
+  grid-column-start: 2;
+}
+
+.grid-start-3 {
+  grid-column-start: 3;
+}
+
+.grid-start-4 {
+  grid-column-start: 4;
+}
+
+.grid-start-5 {
+  grid-column-start: 5;
+}
+
+.grid-start-6 {
+  grid-column-start: 6;
+}
+
+.grid-start-7 {
+  grid-column-start: 7;
+}
+
+.grid-start-8 {
+  grid-column-start: 8;
+}
+
+.grid-start-9 {
+  grid-column-start: 9;
+}
+
+.grid-start-10 {
+  grid-column-start: 10;
+}
+
+.grid-start-11 {
+  grid-column-start: 11;
+}
+
+.grid-start-12 {
+  grid-column-start: 12;
+}
+
+.grid-span-2 {
+  grid-column-end: span 2;
+}
+
+.grid-span-3 {
+  grid-column-end: span 3;
+}
+
+.grid-span-4 {
+  grid-column-end: span 4;
+}
+
+.grid-span-5 {
+  grid-column-end: span 5;
+}
+
+.grid-span-6 {
+  grid-column-end: span 6;
+}
+
+.grid-span-7 {
+  grid-column-end: span 7;
+}
+
+.grid-span-8 {
+  grid-column-end: span 8;
+}
+
+.grid-span-9 {
+  grid-column-end: span 9;
+}
+
+.grid-span-10 {
+  grid-column-end: span 10;
+}
+
+.grid-span-11 {
+  grid-column-end: span 11;
+}
+
+.grid-span-12 {
+  grid-column-end: span 12;
+}
+
+.flex-group-center,
+.flex-group-left,
+.flex-group-right {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flex-group-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.flex-group-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.flexshrink {
+  flex: 0;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flexlarge {
+  flex: 2;
+}
+
+.align-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.align-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.align-center {
+  justify-content: center;
+  text-align: center;
+}
+
+/* Styles limited to thedreaming sheets */
+
+
+
+
+
+.thedreaming .sheet-tabs.tabs a:hover {
+  color: var(--thedreaming-c-black);
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
+
+
+.thedreaming .sheet-tabs.tabs a.active {
+  background-image: url("../assets/353.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: transparent;
+  text-shadow: none;
+  border: none;
+}
+
+
+
+
+
+
+
+
+
+
+.thedreaming .item-form {
+  font-family: "Roboto", sans-serif;
+}
+.thedreaming .sheet-header {
+  flex: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+.thedreaming .sheet-header .profile-img {
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+.thedreaming .sheet-header .header-fields {
+  flex: 1;
+}
+.thedreaming .sheet-tabs {
+  flex: 0;
+}
+.thedreaming .sheet-body,
+.thedreaming .sheet-body .tab,
+.thedreaming .sheet-body .tab .editor {
+  height: 100%;
+}
+.thedreaming .tab.biography {
+  flex: 1;
+}
+.thedreaming .tab.biography .editor {
+  height: 100%;
+}
+.thedreaming .tox .tox-editor-container {
+  background: var(--thedreaming-c-white);
+}
+.thedreaming .tox .tox-edit-area {
+  padding: 0 8px;
+}
+.thedreaming .resource-label {
+  font-weight: bold;
+}
+.thedreaming .ability {
+  margin-bottom: 2px;
+}
+.thedreaming .ability-score,
+.thedreaming .ability-mod {
+  flex: 0 0 44px;
+}
+.thedreaming .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove var(--thedreaming-c-groove);
+  font-weight: bold;
+}
+.thedreaming .items-header > * {
+  font-size: 14px;
+  text-align: center;
+}
+.thedreaming .items-header .item-name {
+  font-weight: bold;
+  padding-left: 5px;
+  text-align: left;
+  display: flex;
+}
+.thedreaming .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: var(--thedreaming-c-tan);
+}
+.thedreaming .items-list .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.thedreaming .items-list .item-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: left;
+  align-items: center;
+  display: flex;
+}
+.thedreaming .items-list .item-name h3, .thedreaming .items-list .item-name h4 {
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.thedreaming .items-list .item-controls {
+  display: flex;
+  flex: 0 0 100px;
+  justify-content: flex-end;
+}
+.thedreaming .items-list .item-controls a {
+  font-size: 12px;
+  text-align: center;
+  margin: 0 6px;
+}
+.thedreaming .items-list .item {
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 1px solid var(--thedreaming-c-faint);
+}
+.thedreaming .items-list .item:last-child {
+  border-bottom: none;
+}
+.thedreaming .items-list .item .item-name {
+  color: var(--thedreaming-c-dark);
+}
+.thedreaming .items-list .item .item-name .item-image {
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: 30px;
+  border: none;
+  margin-right: 5px;
+}
+.thedreaming .items-list .item-prop {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+.thedreaming .items-list .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove var(--thedreaming-c-groove);
+  font-weight: bold;
+}
+.thedreaming .items-list .items-header > * {
+  font-size: 12px;
+  text-align: center;
+}
+.thedreaming .items-list .items-header .item-name {
+  padding-left: 5px;
+  text-align: left;
+}
+.thedreaming .item-formula {
+  flex: 0 0 200px;
+  padding: 0 8px;
+}
+.thedreaming .effects-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove var(--thedreaming-c-groove);
+  font-weight: bold;
+}
+.thedreaming .effects-header > * {
+  font-size: 14px;
+  text-align: center;
+}
+.thedreaming .effects-header .effect-name {
+  font-weight: bold;
+  padding-left: 5px;
+  text-align: left;
+  display: flex;
+}
+.thedreaming .effects-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: var(--thedreaming-c-tan);
+}
+.thedreaming .effects-list .effect-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.thedreaming .effects-list .effect-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: left;
+  align-items: center;
+  display: flex;
+}
+.thedreaming .effects-list .effect-name h3, .thedreaming .effects-list .effect-name h4 {
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.thedreaming .effects-list .effect-controls {
+  display: flex;
+  flex: 0 0 100px;
+  justify-content: flex-end;
+}
+.thedreaming .effects-list .effect-controls a {
+  font-size: 12px;
+  text-align: center;
+  margin: 0 6px;
+}
+.thedreaming .effects-list .effect {
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 1px solid var(--thedreaming-c-faint);
+}
+.thedreaming .effects-list .effect:last-child {
+  border-bottom: none;
+}
+.thedreaming .effects-list .effect .effect-name {
+  color: var(--thedreaming-c-dark);
+}
+.thedreaming .effects-list .effect .effect-name .effect-image {
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: 30px;
+  border: none;
+  margin-right: 5px;
+}
+.thedreaming .effects-list .effect-prop {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+.thedreaming .effects-list .effects-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove var(--thedreaming-c-groove);
+  font-weight: bold;
+}
+.thedreaming .effects-list .effects-header > * {
+  font-size: 12px;
+  text-align: center;
+}
+.thedreaming .effects-list .effects-header .effect-name {
+  padding-left: 5px;
+  text-align: left;
+}
+.thedreaming .effect-formula {
+  flex: 0 0 200px;
+  padding: 0 8px;
+}
+.thedreaming .effects .item .effect-source,
+.thedreaming .effects .item .effect-duration,
+.thedreaming .effects .item .effect-controls {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+.thedreaming .effects .item .effect-controls {
+  border: none;
+}

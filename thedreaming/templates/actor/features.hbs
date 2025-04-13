@@ -1,0 +1,126 @@
+{{! Features Tab }}
+<section
+  class='tab features {{tab.cssClass}}'
+  data-group='primary'
+  data-tab='features'
+>
+  <section class='grid grid-3col'>
+    <aside class='sidebar'>
+      {{! The grid classes are defined in scss/global/_grid.scss. To use,
+          use both the "grid" and "grid-Ncol" class where "N" can be any number
+          from 1 to 12 and will create that number of columns.  }}
+      <div class='abilities flexcol'>
+{{#each system.abilities as |ability key|}}
+  <div class='ability flexrow flex-group-center'>
+    <label
+      class='resource-label rollable flexlarge align-left'
+      data-action='roll'
+      data-roll='@abilities.{{key}}.die{{#if ability.value}} + @abilities.{{key}}.value{{/if}}'
+      data-label='{{localize (lookup @root.config.abilities key)}}'
+    >
+      {{localize (lookup @root.config.abilities key)}}
+    </label>
+
+    {{#if ability.value}}
+      <!-- Ability Value -->
+      <input
+        type='number'
+        name='system.abilities.{{key}}.value'
+        value='{{ability.value}}'
+        class='ability-score'
+        data-dtype='Number'
+      />
+    {{/if}}
+
+    <!-- Ability Die (Dropdown) -->
+    <select name='system.abilities.{{key}}.die' class='ability-die-select'>
+      {{#each (array "d4" "d6" "d8" "d10" "d12") as |dieOption|}}
+        <option value='{{dieOption}}' {{#if (eq ability.die dieOption)}}selected{{/if}}>
+          {{dieOption}}
+        </option>
+      {{/each}}
+    </select>
+
+    <!-- Roll Display - do I need it?
+    
+        <span
+      class='ability-die rollable'
+      data-action='roll'
+      data-roll='@abilities.{{key}}.die{{#if ability.value}} + @abilities.{{key}}.value{{/if}}'
+      data-label='{{localize (lookup @root.config.abilities key)}}'
+    >
+      {{ability.rollFormula}}
+    </span>
+    
+    
+     -->
+   
+  </div>
+{{/each}}
+</div>
+    </aside>
+
+    {{! For the main features list, span the right two columns }}
+    <section class='main grid-span-2'>
+      <ol class='items-list'>
+        <li class='item flexrow items-header'>
+          <div class='item-name'>{{localize 'Name'}}</div>
+          <div class='item-controls'>
+            {{#if @root.editable}}
+              <a
+                class='item-control item-create'
+                title='Create item'
+                data-action='createDoc'
+                data-document-class='Item'
+                data-type='feature'
+              >
+                <i class='fas fa-plus'></i>
+                {{localize 'DOCUMENT.New' type='feature'}}
+              </a>
+            {{/if}}
+          </div>
+        </li>
+        {{#each features as |item id|}}
+          <li
+            class='item flexrow'
+            data-item-id='{{item._id}}'
+            data-drag='true'
+            data-document-class='Item'
+          >
+            <div class='item-name'>
+              <div class='item-image'>
+                <a class='rollable' data-roll-type='item' data-action='roll'>
+                  <img
+                    src='{{item.img}}'
+                    title='{{item.name}}'
+                    width='24'
+                    height='24'
+                  />
+                </a>
+              </div>
+              <div>{{item.name}}</div>
+            </div>
+            <div class='item-controls'>
+              <a
+                class='item-control item-edit'
+                title='{{localize "DOCUMENT.Update" type='feature'}}'
+                data-action='viewDoc'
+              >
+                <i class='fas fa-edit'></i>
+              </a>
+              {{#if @root.editable}}
+                <a
+                  class='item-control item-delete'
+                  title='{{localize "DOCUMENT.Delete" type='feature'}}'
+                  data-action='deleteDoc'
+                >
+                  <i class='fas fa-trash'></i>
+                </a>
+              {{/if}}
+            </div>
+          </li>
+        {{/each}}
+      </ol>
+    </section>
+  </section>
+</section>

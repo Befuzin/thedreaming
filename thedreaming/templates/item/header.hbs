@@ -1,0 +1,59 @@
+<header class='sheet-header'>
+  <img
+    class='profile-img'
+    src='{{item.img}}'
+    data-edit='img'
+    data-action='onEditImage'
+    title='{{item.name}}'
+  />
+  <div class='header-fields'>
+    <div class='document-name'>
+      <input name='name' type='text' value='{{item.name}}' placeholder='Name' />
+    </div>
+
+    {{#if (eq item.type 'gear')}}
+      <div class='grid grid-2col'>
+        <!-- Quantity Field -->
+        <div class='resource'>
+          <label class='resource-label'>
+            {{localize 'THEDREAMING.Item.Gear.FIELDS.quantity.label'}}
+          </label>
+          <input
+            type='text'
+            name='system.quantity'
+            value='{{system.quantity}}'
+            data-dtype='Number'
+          />
+        </div>
+
+        <!-- Weapon Checkbox -->
+        <div class='form-group'>
+          <label>{{localize 'Item.Gear.IsWeapon'}}</label>
+          <input type="checkbox" name="system.isWeapon" {{checked system.isWeapon}} />
+        </div>
+
+        <!-- Armour Checkbox -->
+        <div class='form-group'>
+          <label>{{localize 'Item.Gear.IsArmour'}}</label>
+          <input type="checkbox" name="system.isArmour" {{checked system.isArmour}} />
+        </div>
+
+        
+
+        <!-- Weight Field -->
+        <div class='resource'>
+          <label class='resource-label'>
+            {{localize 'THEDREAMING.Item.Gear.FIELDS.weight.label'}}
+          </label>
+          <input
+            type='text'
+            name='system.weight'
+            value='{{system.weight}}'
+            data-dtype='Number'
+          />
+        </div>
+      </div>
+      
+    {{/if}}
+  </div>
+</header>
